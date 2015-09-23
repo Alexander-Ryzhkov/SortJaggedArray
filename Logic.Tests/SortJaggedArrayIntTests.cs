@@ -10,29 +10,37 @@ namespace Logic.Tests
         [ExpectedException(typeof(ArgumentNullException))]
         public void SortDescendingByMinElement_NullReference()
         {
-            SortJaggedArrayInt.SortDescendingByMinElement(null);
+            int[][] act = null;
+            SortJaggedArrayInt.SortDescendingByMinElement(act);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void SortDescendingByMinElement_ArgumentException()
         {
-
-            SortJaggedArrayInt.SortDescendingByMinElement(new int[][] { });
-        }
-        /*
-        [TestMethod]
-        public void SortDescendingByMinElement_OneArray()
-        {
-            int[][] arrange = {
-                                  new int[] {1},
-                                  new int[] {5, -8}
-                              };
-            int[][] act = arrange;
+            int[][] act = new int[][] { };
             SortJaggedArrayInt.SortDescendingByMinElement(act);
-            System.Console.WriteLine(act[0][0]);
-            Assert.AreEqual(arrange, act);
         }
-         */
+
+        [TestMethod]
+        public void SortDescendingByMinElement_SimpleArray()
+        {
+            int[][] arrange =
+            {
+                new int[] {1, -1},
+                new int[] {5, -8}
+            };
+            int[][] act = 
+            {
+                new int[] {5, -8},
+                new int[] {1, -1}
+            };
+            SortJaggedArrayInt.SortDescendingByMinElement(act);
+            for (int i = 0; i < arrange.Length; i++)
+            {
+                CollectionAssert.AreEqual(arrange[i], act[i]);
+            }
+        }
+         
     }
 }

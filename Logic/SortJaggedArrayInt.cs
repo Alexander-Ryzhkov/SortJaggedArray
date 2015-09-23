@@ -11,6 +11,7 @@ namespace Logic
 
         public static void SortDescendingByMinElement(int[][] jaggedArray)
         {
+
             if (jaggedArray == null) throw new ArgumentNullException("jaggedArray");
             if (jaggedArray.Length == 0) throw new ArgumentException("jaggedArray is empty");
 
@@ -26,14 +27,14 @@ namespace Logic
                 for (int i = 0; i < jaggedArray.Length - 1; i++)
                 {
                     if (jaggedArray[i].Min() < jaggedArray[i + 1].Min())
-                        Swap(jaggedArray[i], jaggedArray[i + 1]);
+                        Swap(ref jaggedArray[i], ref jaggedArray[i + 1]);
 
                 }
             }
 
         }
 
-        private static void Swap(int[] a, int[] b)
+        private static void Swap(ref int[] a, ref int[] b)
         {
             int[] temp = a;
             a = b;
