@@ -17,7 +17,7 @@ namespace Logic
 
             for (int i = 0; i < jaggedArray.Length; i++)
             {
-                if (jaggedArray[i] == null) throw new ArgumentNullException("jaggedArray", string.Format("inner array {0}", i));
+                if (jaggedArray[i] == null) throw new ArgumentException(string.Format("inner array {0} is null", i));
                 if (jaggedArray[i].Length == 0) throw new ArgumentException(string.Format("inner array {0} is empty", i));
             }
 
