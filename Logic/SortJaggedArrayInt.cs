@@ -8,11 +8,39 @@ namespace Logic
 {
     public static class SortJaggedArrayInt
     {
+        public delegate int Comparer(int[] array1, int[] array2);
 
-        public static void SortDescendingByMinElement(int[][] jaggedArray)
+
+
+        public static int CompareBySum(int[] array1, int[] array2)
         {
+            checked
+            {
+                return array1.Sum() - array2.Sum();
+            }
+        }
+        public static int CompareByMax(int[] array1, int[] array2)
+        {
+            checked
+            {
+                return array1.Max() - array2.Max();
+            }
+        }
+        public static int CompareByMin(int[] array1, int[] array2)
+        {
+            checked
+            {
+                return array1.Min() - array2.Min();
+            }
+        }
 
+
+        
+        public static void SortDescending(int[][] jaggedArray, Comparer comparer)
+        {
+            
             if (jaggedArray == null) throw new ArgumentNullException("jaggedArray");
+            if (comparer == null) throw new ArgumentNullException("comparer");
             if (jaggedArray.Length == 0) throw new ArgumentException("jaggedArray is empty");
 
             for (int i = 0; i < jaggedArray.Length; i++)
@@ -26,9 +54,8 @@ namespace Logic
             {
                 for (int i = 0; i < jaggedArray.Length - 1; i++)
                 {
-                    if (jaggedArray[i].Min() < jaggedArray[i + 1].Min())
+                    if (comparer(jaggedArray[i], jaggedArray[i + 1]) < 0)
                         Swap(ref jaggedArray[i], ref jaggedArray[i + 1]);
-
                 }
             }
 
