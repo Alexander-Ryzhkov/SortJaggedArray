@@ -95,8 +95,8 @@ namespace Logic.Tests
                 new int[] {int.MaxValue - 10, 10},
                 new int[] {7, 8, 90, 909}
             };
-
-            SortJaggedArrayInt.SortDescending(act, SortJaggedArrayInt.CompareBySum);
+            Adapter adapter = new Adapter(SortJaggedArrayInt.CompareBySum);
+            SortJaggedArrayInt.SortDescending(act, adapter);
             for (int i = 0; i < arrange.Length; i++)
             {
                 CollectionAssert.AreEqual(arrange[i], act[i]);

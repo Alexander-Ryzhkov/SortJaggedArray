@@ -61,6 +61,11 @@ namespace Logic
 
         }
 
+        public static void SortDescending(int[][] jaggedArray, IComparer<int[]> comparer)
+        {
+            SortDescending(jaggedArray, comparer.Compare);
+        }
+
         private static void Swap(ref int[] a, ref int[] b)
         {
             int[] temp = a;
